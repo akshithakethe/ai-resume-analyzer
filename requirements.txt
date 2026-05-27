@@ -2,3 +2,4 @@ flask
 pdfplumber
 requests
 reportlab
+gunicorn
