@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Resume Analyzer</title>
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body{
+            height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            overflow:hidden;
+
+            background: linear-gradient(
+                135deg,
+                #667eea,
+                #764ba2,
+                #6a11cb,
+                #2575fc
+            );
+
+            background-size:400% 400%;
+            animation: gradientBG 10s ease infinite;
+        }
+
+        @keyframes gradientBG{
+            0%{
+                background-position:0% 50%;
+            }
+
+            50%{
+                background-position:100% 50%;
+            }
+
+            100%{
+                background-position:0% 50%;
+            }
+        }
+
+        .container{
+            width:500px;
+            padding:40px;
+            border-radius:25px;
+
+            background: rgba(255,255,255,0.15);
+
+            backdrop-filter: blur(15px);
+
+            border:1px solid rgba(255,255,255,0.2);
+
+            box-shadow:0 8px 32px rgba(0,0,0,0.2);
+
+            text-align:center;
+            color:white;
+        }
+
+        h1{
+            margin-bottom:10px;
+        }
+
+        p{
+            margin-bottom:20px;
+        }
+
+        input[type="file"]{
+            width:100%;
+            padding:12px;
+            background:white;
+            border-radius:10px;
+            border:none;
+            cursor:pointer;
+        }
+
+        input[type="text"]{
+            width:100%;
+            padding:12px;
+            border-radius:10px;
+            border:none;
+            margin-top:15px;
+            outline:none;
+        }
+
+        #file-name{
+            margin-top:10px;
+            font-size:14px;
+            color:#f1f1f1;
+        }
+
+        button{
+            margin-top:20px;
+            background:#00e5ff;
+            color:black;
+            border:none;
+            padding:15px 25px;
+            border-radius:12px;
+            cursor:pointer;
+            font-size:18px;
+            font-weight:bold;
+            transition:0.3s;
+        }
+
+        button:hover{
+            transform:scale(1.05);
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🤖 AI Resume Analyzer</h1>
+
+    <p>
+        Upload your resume and GitHub profile
+    </p>
+
+    <form action="/analyze"
+          method="POST"
+          enctype="multipart/form-data">
+
+        <input
+            type="file"
+            id="resume"
+            name="resume"
+            required
+            onchange="showFileName()">
+
+        <p id="file-name">
+            No file chosen
+        </p>
+
+        <input
+            type="text"
+            name="github"
+            placeholder="Enter GitHub Username">
+
+        <button type="submit">
+            Analyze Resume
+        </button>
+
+    </form>
+
+</div>
+
+<script>
+
+function showFileName(){
+
+    let fileInput =
+        document.getElementById("resume");
+
+    let fileNameText =
+        document.getElementById("file-name");
+
+    if(fileInput.files.length > 0){
+
+        fileNameText.innerText =
+            "Selected File: " +
+            fileInput.files[0].name;
+    }
+}
+
+</script>
+
+</body>
+</html>
